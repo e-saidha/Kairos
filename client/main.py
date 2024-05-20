@@ -1,5 +1,5 @@
 import sys
-# sys.path.append("/Users/sarthakkapila/Desktop/kairos/Kairos")
+sys.path.append("C:/Users/Asus/Downloads/New folder (2)/Athena")
 # sys.path.append("C:/Users/Asus/Desktop/kairos-final/Kairos")
 
 import os
@@ -10,6 +10,7 @@ from src.agents.planner import Planner
 from src.agents.researcher import Researcher
 from src.agents.coder import Coder
 from src.agents.project_creator import ProjectCreator
+from streamlit_extras.stylable_container import stylable_container
 
 from src.keyword_extractor import SentenceBert
 
@@ -19,25 +20,28 @@ from utils import stream_text, search_queries, prepare_coding_files
 original_working_dir = os.getcwd()
 
 
+
+
 # Loading messages avatars
-kairos_avatar = "assets/kairos-profile.png"
-user_avatar = "assets/user-profile.jpg"
+kairos_avatar = "C:/Users/Asus/Downloads/New folder (2)/Athena/assets/kairos-profile.png"
+user_avatar = "C:/Users/Asus/Downloads/New folder (2)/Athena/assets/user-profile.jpg"
 
 selected_model = None
 google_api_key = None
 cohere_api_key = None
 
 # Set page layout
-st.set_page_config(layout="wide")
-
+st.set_page_config(page_title = "Athena", page_icon="C:/Users/Asus/Downloads/New folder (2)/Athena/assets/mars_planet_icon_263081.ico", layout = "wide")
+hide_decoration_bar_style = ''' <style> header {visibility: hidden;} </style> ''' 
+st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 # Set custom CSS styling
-with open("client/style.css") as f:
+with open("C:/Users/Asus/Downloads/New folder (2)/Athena/client/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Initalized messages
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": "HI, I am Kairos! how can I help you?"}
+        {"role": "assistant", "content": "HI, I am Athena! how can I help you?"}
     ]
 
 
@@ -46,24 +50,64 @@ def page_switcher(page):
 
 # st.markdown(btn_style, unsafe_allow_html=True)
 
+
 def welcome_page():
     with st.container():
-        st.title("Welcome to Kairos!", anchor=False)
+        # Title and description
+        
+        st.title("Welcome to Athena!", anchor=False)
         st.write(
-            """Kairos is an advanced AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. """
+            """
+            Athena is an advanced AI software engineer that can understand high-level human instructions,
+            break them down into steps, research relevant information, and write code to achieve the given objective.
+            """
         )
         
+        # Add a horizontal line for visual separation
+        st.markdown("<br>", unsafe_allow_html=True)
         
-        # st.markdown("----", unsafe_allow_html=True)
-        columns = st.columns((1, 1, 1))
-        btn = columns[1].button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
-        # st.markdown("----", unsafe_allow_html=True)
+        # Center the button
+        columns = st.columns((1, 1, 1, 1, 1, 1, 1,1 ,1))
+        btn = columns[4].button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
         
-        # btn = st.button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
-        st.image(image="assets/kairos-profile.png", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        # Display the image with a suitable width
+        with stylable_container(
+            key  = "athena_image", 
+            css_styles="""
+                  img{
+                  border-radius: 20px; 
+                  margin-left:500px
+                  }"""
 
+        ):
+           st.image(image="C:/Users/Asus/Downloads/New folder (2)/Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg", use_column_width="auto")
+        
+        # Rerun the app if button is clicked
         if btn:
-            st.rerun()
+            st.experimental_rerun()
+
+            # end
+# def welcome_page():
+#     with st.container():
+#         st.title("Welcome to Kairos!", anchor=False)
+#         st.write(
+#             """Kairos is an advanced AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. """
+#         )
+        
+        
+#         # st.markdown("----", unsafe_allow_html=True)
+#         columns = st.columns((1, 1, 1))
+#         btn = columns[1].button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
+#         # st.markdown("----", unsafe_allow_html=True)
+        
+#         # btn = st.button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
+#         st.image(image="C:/Users/Asus/Downloads/New folder (2)/Athena/assets/kairos-profile.png", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+
+#         if btn:
+#             st.rerun()
 
 
 def configuration_page():
@@ -142,9 +186,10 @@ def workspace_page():
 
     # Workspace
     with col2:
+        st.title("Athena's Workspace")
         workspace = st.container(height=620, border=True)
         with workspace:
-            st.title("Kairos Workspace", anchor=False)
+            # st.title("Kairos Workspace", anchor=False)
             tab1, tab2, tab3, tab4 = st.tabs(
                 ["Planner", "Browser", "Coder", "Project"]
             )
@@ -162,12 +207,14 @@ def workspace_page():
                 project_area = st.container()
 
     # Chat
-    prompt = st.chat_input(placeholder="Talk to Kairos")
+    prompt = st.chat_input(placeholder="Talk to Athena")
+    
     with col1:
+        st.title("Chat", anchor=False)
         chat = st.container(height=620, border=True)
 
         with chat:
-            st.title("Kairos Chat", anchor=False)
+            
 
             # Displaying messages
             for message in st.session_state.messages:
@@ -392,3 +439,8 @@ if __name__ == "__main__":
     if "runpage" not in st.session_state:
         st.session_state.runpage = welcome_page
     st.session_state.runpage()
+
+
+
+# old welcome page 
+

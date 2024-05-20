@@ -4,12 +4,17 @@
     overflow-y: scroll;
 } */
 
+
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Jost:ital,wght@0,100..900;1,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap');
 
 * {
-    font-family: Monaco, monospace !important;
+    /* font-family: Monaco, monospace !important; */
+    font-family: "DM Sans", sans-serif;
+    
 }
 
 p {
@@ -19,23 +24,29 @@ p {
 
 h1:not(#welcome-at-kevin, #configure-some-settings) {
     width: 100% !important;
-    font-weight: 900 !important;
-    margin-bottom: calc(1rem);
-    font-size: 60px;
+    font-weight: 700 !important;
+    margin-bottom: 0px;
+    font-size: 30px;
+    
 
 
 
     color: #ffffff;
 
     /* color: #ffffff;
-    background-color: #30303a; */
+    background-color: #30303a;
 
     /* padding: 8px 0; */
     padding-left: -20px;
     padding-right: -20px;
     border-radius: 0.2rem;
 }
-
+.st-emotion-cache-1jicfl2 {
+    padding-top: 30px;
+}
+.st-emotion-cache-7tauuy{
+    padding-top: 30px;
+}
 .st-emotion-cache-j78z8c {
     padding-left: 20px !important;
     margin: 0;
@@ -73,5 +84,10 @@ h1:not(#welcome-at-kevin, #configure-some-settings) {
     border: none;
 }
 
+h1{
+    padding-left: 7px;
+}
+
 footer{visibility: hidden;}
-#MainMenu {visibility: hidden;}
+#MainMenu {visibility:hidden;}
+

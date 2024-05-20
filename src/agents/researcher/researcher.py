@@ -5,7 +5,7 @@ from jinja2 import Environment, BaseLoader
 from src.llm import LLM
 
 
-researcher_prompt = open("src/agents/researcher/prompt.jinja2").read().strip()
+researcher_prompt = open("C:/Users/Asus/Downloads/New folder (2)/Athena/src/agents/researcher/prompt.jinja2").read().strip()
 
 
 class Researcher:

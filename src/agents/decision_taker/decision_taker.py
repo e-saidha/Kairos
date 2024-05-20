@@ -4,7 +4,7 @@ from jinja2 import Environment, BaseLoader
 from src.llm import LLM
 
 
-decision_prompt = open("src/agents/decision_taker/prompt.jinja2").read().strip()
+decision_prompt = open("C:/Users/Asus/Downloads/New folder (2)/Athena/src/agents/decision_taker/prompt.jinja2").read().strip()
 
 class DecisionTaker:
     def __init__(self, base_model, api_key) -> None:
