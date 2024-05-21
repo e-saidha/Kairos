@@ -2,6 +2,7 @@ import sys
 # sys.path.append("/Users/sarthakkapila/Desktop/athena/athena")
 # sys.path.append("C:/Users/Asus/Desktop/athena-final/athena")
 # sys.path.append("C:\\Users\\Ekom\\Desktop\\athena\athena")
+sys.path.append('/mount/src/athena')
 
 import os
 import time
