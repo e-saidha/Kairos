@@ -9,8 +9,8 @@ project_creator_prompt = open("src/agents/project_creator/prompt.jinja2").read()
 
 
 class ProjectCreator:
-    def __init__(self, base_model, api_key):
-        self.llm = LLM(base_model, api_key)
+    def __init__(self, base_model):
+        self.llm = LLM(base_model)
 
     def render(self, project_name, full_code):
         env = Environment(loader=BaseLoader)

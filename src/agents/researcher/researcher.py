@@ -9,8 +9,8 @@ researcher_prompt = open("src/agents/researcher/prompt.jinja2").read().strip()
 
 
 class Researcher:
-    def __init__(self, base_model, api_key):
-        self.llm = LLM(base_model, api_key)
+    def __init__(self, base_model):
+        self.llm = LLM(base_model)
 
     def render(self, step_by_step_plan, contexutal_keywords):
         env = Environment(loader=BaseLoader())
