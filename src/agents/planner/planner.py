@@ -7,8 +7,8 @@ planner_prompt = open("src/agents/planner/prompt.jinja2").read().strip()
 
 
 class Planner:
-    def __init__(self, base_model, api_key):
-        self.llm = LLM(base_model, api_key)
+    def __init__(self, base_model):
+        self.llm = LLM(base_model)
 
     def render(self, prompt):
         env = Environment(loader=BaseLoader())

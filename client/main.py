@@ -1,6 +1,7 @@
 import sys
-# sys.path.append("/Users/sarthakkapila/Desktop/kairos/Kairos")
+sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
 # sys.path.append("C:/Users/Asus/Desktop/kairos-final/Kairos")
+import logging
 
 import os
 import time
@@ -25,7 +26,8 @@ user_avatar = "assets/user-profile.jpg"
 
 selected_model = None
 google_api_key = None
-cohere_api_key = None
+# cohere_api_key = None
+replicate_api_key = None
 
 # Set page layout
 st.set_page_config(layout="wide")
@@ -37,7 +39,7 @@ with open("client/style.css") as f:
 # Initalized messages
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": "HI, I am Kairos! how can I help you?"}
+        {"role": "assistant", "content": "HI, I am Athena! how can I help you?"}
     ]
 
 
@@ -75,7 +77,7 @@ def configuration_page():
         global selected_model
         selected_model = st.selectbox(
             "Select a model",
-            options=["Gemini-Pro", "Cohere"],
+            options=["Arctic-Instruct", "Gemini-Pro"],
             key="selected_model",
         )
 
@@ -87,13 +89,15 @@ def configuration_page():
             type="password",
         )
 
-    elif st.session_state["selected_model"] == "Cohere":
-        global cohere_api_key
-        cohere_api_key = st.text_input(
-            "Cohere API key",
-            placeholder="Enter your Cohere API key",
-            type="password",
-        )
+    elif st.session_state["selected_model"] == "Arctic-Instruct":
+        # global cohere_api_key
+        # cohere_api_key = st.text_input(
+            # "Cohere API key",
+            # placeholder="Enter your Cohere API key",
+            # type="password",
+        # )
+        print("Selected model -> Arctic-Instruct")
+        
 
     with col2:
         project_name = st.text_input(
@@ -104,15 +108,15 @@ def configuration_page():
 
     if created:
         if project_name:
-            if selected_model == "Cohere":
-                if cohere_api_key:
-                    os.environ["COHERE_API_KEY"] = cohere_api_key
-                    with st.spinner(f"Creating '{project_name}'..."):
-                        time.sleep(2)
-                        page_switcher(workspace_page)
-                        st.rerun()
-                else:
-                    st.error("Please, enter your Cohere API key!")
+            if selected_model == "Arctic-Instruct":
+                # if replicate_api_key:
+                #     os.environ["REPLICATE_API_KEY"] = replicate_api_key
+                with st.spinner(f"Creating '{project_name}'..."):
+                    time.sleep(2)
+                    page_switcher(workspace_page)
+                    st.rerun()
+                # else:
+                #     st.error("Please, enter your Cohere API key!")
 
             elif selected_model == "Gemini-Pro":
                 if google_api_key:
@@ -129,13 +133,13 @@ def configuration_page():
 
 
 def workspace_page():
-    api_key = google_api_key if selected_model == "Gemini-Pro" else cohere_api_key
+    # api_key = google_api_key if selected_model == "Gemini-Pro" else replicate_api_key
 
-    decision_taker = DecisionTaker(selected_model, api_key)
-    planner = Planner(selected_model, api_key)
-    reseacher = Researcher(selected_model, api_key)
-    coder = Coder(selected_model, api_key)
-    project_creator = ProjectCreator(selected_model, api_key)
+    decision_taker = DecisionTaker(selected_model)
+    planner = Planner(selected_model)
+    reseacher = Researcher(selected_model)
+    coder = Coder(selected_model)
+    project_creator = ProjectCreator(selected_model)
 
     # Splitting screen into 2 columns
     col1, col2 = st.columns(2)
@@ -182,17 +186,18 @@ def workspace_page():
                 st.session_state.messages.append({"role": "user", "content": prompt})
 
                 with st.spinner("Processing your prompt ..."):
-                    response = decision_taker.execute(prompt)[0]
+                    data = decision_taker.execute(prompt)
+                    print(data)
 
-                if response["function"] == "ordinary_conversation":
+                if data['function'] == "ordinary_conversation":
                     st.chat_message("ai", avatar=kairos_avatar).write_stream(
-                        stream_text(response["reply"])
+                        stream_text(data['reply'])
                     )
                     st.session_state.messages.append(
-                        {"role": "ai", "content": response["reply"]}
+                        {"role": "ai", "content": data['reply']}
                     )
 
-                elif response["function"] == "coding_project":
+                elif data['function'] == "coding_project":
                     st.chat_message("ai", avatar=kairos_avatar).write_stream(
                         stream_text("Idenified your request as a `coding_project`! ")
                     )
