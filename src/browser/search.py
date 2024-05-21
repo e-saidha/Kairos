@@ -16,4 +16,5 @@ class GoogleSearch:
             return err
 
     def get_first_link(self):
+        print(self.query_result[0])
         return self.query_result[0]

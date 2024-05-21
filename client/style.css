@@ -7,24 +7,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Jost:ital,wght@0,100..900;1,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 * {
-    font-family: Monaco, monospace !important;
+    /* font-family: Monaco, monospace !important; */
+    font-family: "DM Sans", sans-serif;
 }
 
 p {
-    font-size: 20px !important;
-    font-weight: 400;    
+    font-size: 25px !important;
+    width: 100% !important;
+    font-weight: 400 !important;
+    margin-bottom: calc(1rem);
+    font-size: 30px;
+    padding: 3px;
+    padding-left: 10px;
 }
 
-h1:not(#welcome-at-kevin, #configure-some-settings) {
+h1:not(#welcome, #configure-some-settings) {
     width: 100% !important;
-    font-weight: 900 !important;
+    font-weight: 700 !important;
     margin-bottom: calc(1rem);
-    font-size: 60px;
-
-
-
+    font-size: 30px;
+    padding: 3px;
+    padding-left: 10px;
     color: #ffffff;
 
     /* color: #ffffff;
@@ -36,19 +41,33 @@ h1:not(#welcome-at-kevin, #configure-some-settings) {
     border-radius: 0.2rem;
 }
 
+.st-emotion-cache-1kyxreq{
+    display: flex; 
+    justify-content: center;
+}
+
+img {
+    border-radius: 20px;
+    /* padding-top: 10px; */
+}
+
+.block-container.st-emotion-cache-z5fcl4.ea3mdgi5{
+    padding-top: 30px;
+}
+
 .st-emotion-cache-j78z8c {
     padding-left: 20px !important;
     margin: 0;
 }
 
 
-.block-container.st-emotion-cache-z5fcl4.ea3mdgi5:nth-child(1) {
+/* .block-container.st-emotion-cache-z5fcl4.ea3mdgi5:nth-child(1) {
     max-width: 800px;
-}
+} */
 
 /* button */
 .st-emotion-cache-1kqucs1 {
-    background-color: #3572ff;
+    background-color: #0b55ff;
     color: #fff;
     border: none;
     outline: none;
@@ -64,6 +83,12 @@ h1:not(#welcome-at-kevin, #configure-some-settings) {
     border: none;
 }
 
+.st-emotion-cache-9tg1hl {
+    width: 100%;
+    padding-top: 30px;
+    min-width: auto;
+    max-width: initial;
+}
 .stDeployButton {
     visibility: hidden;
 }

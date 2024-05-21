@@ -21,12 +21,14 @@ class LLM:
             genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
             self.model = genai.GenerativeModel("gemini-pro")
 
-    def inference(self, prompts):
+    def inference(self, prompt):
         if self.base_model == "Arctic-Instruct":
             response = ""  
             for event in replicate.stream(
                 self.model,
-                input={"prompt": prompts}
+                input={"prompt": prompt,
+                    "max_new_tokens": 1000,
+                    "min_new_tokens": 10, },
             ):
                 if event.data:  # Check if the event has non-empty data
                     response += event.data
@@ -42,8 +44,3 @@ class LLM:
             # response = chain.invoke(prompt)
             return response
 
-
-# USAGE
-# LLM("Arctic-Instruct").inference("""
-#                                  hello how are you?
-#                                  """)
