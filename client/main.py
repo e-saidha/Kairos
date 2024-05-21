@@ -1,6 +1,6 @@
 import sys
-# sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
-sys.path.append("C:/Users/Asus/Downloads/charity work/Athena")
+sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
+# sys.path.append("C:/Users/Asus/Downloads/charity work/Athena")
 import logging
 
 import os
@@ -21,18 +21,17 @@ original_working_dir = os.getcwd()
 
 
 # Loading messages avatars
-# kairos_avatar = "Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg"
+# athena_avatar = "Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg"
 # user_avatar = "assets/user-profile.jpg"
-kairos_avatar = "C:/Users/Asus/Downloads/charity work/Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg"
-user_avatar = "C:/Users/Asus/Downloads/charity work/Athena/assets/user-profile.jpg"
+athena_avatar = "assets/Athena.jpeg"
+user_avatar = "assets/user-profile.jpg"
 
 selected_model = None
 google_api_key = None
-# cohere_api_key = None
 replicate_api_key = None
 
 # Set page layout
-st.set_page_config(page_title = "Athena", page_icon="C:/Users/Asus/Downloads/New folder (2)/Athena/assets/mars_planet_icon_263081.ico", layout = "wide")
+st.set_page_config(page_title = "Athena", page_icon="assets/mars_planet_icon.ico", layout = "wide")
 # st.set_page_config(layout="wide")
 
 
@@ -46,7 +45,7 @@ st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 
 # Set custom CSS styling
 # with open("client/style.css") as f:
-with open("C:/Users/Asus/Downloads/charity work/Athena/client/style.css") as f:    
+with open("client/style.css") as f:    
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Initalized messages
@@ -63,9 +62,9 @@ def page_switcher(page):
 
 def welcome_page():
     with st.container():
-        st.title("Welcome to Kairos!", anchor=False)
+        st.title("Welcome to Athena!", anchor=False)
         st.write(
-            """Kairos is an advanced AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. """
+            """Athena is an advanced AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. """
         )
 
         st.markdown("<br>", unsafe_allow_html=True)
@@ -78,8 +77,8 @@ def welcome_page():
         st.markdown("<br>", unsafe_allow_html=True)
         
         # btn = st.button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
-        # st.image(image="assets/kairos-profile.png", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-        st.image(image="C:/Users/Asus/Downloads/charity work/Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+        # st.image(image="assets/athena.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+        st.image(image=athena_avatar, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
  
         if btn:
             st.rerun()
@@ -163,10 +162,10 @@ def workspace_page():
 
     # Workspace
     with col2:
-        st.title("Athena's Workspace", anchor=False)
+        # st.title("Athena's Workspace", anchor=False)
         workspace = st.container(height=620, border=True)
         with workspace:
-            # st.title("Kairos Workspace", anchor=False)
+            st.title("Athena Workspace", anchor=False)
             tab1, tab2, tab3, tab4 = st.tabs(
                 ["Planner", "Browser", "Coder", "Project"]
             )
@@ -184,17 +183,17 @@ def workspace_page():
                 project_area = st.container()
 
     # Chat
-    prompt = st.chat_input(placeholder="Talk to Kairos")
+    prompt = st.chat_input(placeholder="Talk to Athena")
     with col1:
-        st.title("Chat", anchor=False)
+        # st.title("Chat", anchor=False)
         chat = st.container(height=620, border=True)
 
         with chat:
-            # st.title("Kairos Chat", anchor=False)
+            st.title("Athena Chat", anchor=False)
 
             # Displaying messages
             for message in st.session_state.messages:
-                avatar = user_avatar if message["role"] == "user" else kairos_avatar
+                avatar = user_avatar if message["role"] == "user" else athena_avatar
                 st.chat_message(message["role"], avatar=avatar).write(
                     message["content"]
                 )
@@ -209,7 +208,7 @@ def workspace_page():
                     print(data)
 
                 if data['function'] == "ordinary_conversation":
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(data['reply'])
                     )
                     st.session_state.messages.append(
@@ -217,7 +216,7 @@ def workspace_page():
                     )
 
                 elif data['function'] == "coding_project":
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text("Idenified your request as a `coding_project`! ")
                     )
                     st.session_state.messages.append(
@@ -237,14 +236,14 @@ def workspace_page():
 
                     project_name = planner_json_response["project"]
 
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(model_reply)
                     )
                     st.session_state.messages.append(
                         {"role": "ai", "content": model_reply}
                     )
 
-                    # Write the generated plan in the Kairos Planner tab
+                    # Write the generated plan in the Planner tab
                     with planner_area:
                         plan_and_summary = generated_plan[
                             generated_plan.index("Plan") : -3
@@ -260,15 +259,15 @@ def workspace_page():
                         keyword_extractor = SentenceBert()
                         keywords = keyword_extractor.extract_keywords(prompt)
 
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(
-                            "I correctly identified the relevant keywords in your prompt at `Kairos Browser` tab"
+                            "I correctly identified the relevant keywords in your prompt at `Athena Browser` tab"
                         )
                     )
                     st.session_state.messages.append(
                         {
                             "role": "ai",
-                            "content": "I correctly identified the relevant keywords in your prompt at `Kairos Browser` tab",
+                            "content": "I correctly identified the relevant keywords in your prompt at `Athena Browser` tab",
                         }
                     )
 
@@ -288,15 +287,15 @@ def workspace_page():
                     with st.spinner("Generating search queries ..."):
                         reseacher_output = reseacher.execute(plan_and_summary, keywords)
 
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(
-                            "I 've just generated contextual search queries. Check the `Kairos Browser` tab"
+                            "I 've just generated contextual search queries. Check the `Athena Browser` tab"
                         )
                     )
                     st.session_state.messages.append(
                         {
                             "role": "ai",
-                            "content": "I 've just generated contextual search queries. Check the `Kairos Browser` tab",
+                            "content": "I 've just generated contextual search queries. Check the `Athena Browser` tab",
                         }
                     )
 
@@ -306,7 +305,7 @@ def workspace_page():
                             st.info(f"Query #{i+1}: {query}")
 
                     model_reply = f"I am doing my research for the following queries on the web: `{ ', '.join(reseacher_output['queries']) }` "
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(model_reply)
                     )
                     st.session_state.messages.append(
@@ -321,8 +320,8 @@ def workspace_page():
                         st.write_stream(stream_text("Queries results: "))
                         st.write(queries_result)
 
-                    model_reply = f"Results of `{', '.join(reseacher_output['queries'])}` retrieved successfully. Check out the `Kairos Browser` tab to take a look."
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    model_reply = f"Results of `{', '.join(reseacher_output['queries'])}` retrieved successfully. Check out the `Athena Browser` tab to take a look."
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(model_reply)
                     )
                     st.session_state.messages.append(
@@ -341,7 +340,7 @@ def workspace_page():
                             queries_result,
                         )
 
-                    with st.spinner("Writing code at the `Kairos Coder` tab ..."):
+                    with st.spinner("Writing code at the `Athena Coder` tab ..."):
                         with coder_area:
                             for item in coder_output:
                                 st.write_stream(
@@ -349,15 +348,15 @@ def workspace_page():
                                 )
                                 st.write_stream(stream_text(item["code"]))
 
-                    st.chat_message("ai", avatar=kairos_avatar).write_stream(
+                    st.chat_message("ai", avatar=athena_avatar).write_stream(
                         stream_text(
-                            f"I finished generating the code for `{project_name}`. Check out the `Kairos Coder` tab"
+                            f"I finished generating the code for `{project_name}`. Check out the `Athena Coder` tab"
                         )
                     )
                     st.session_state.messages.append(
                         {
                             "role": "ai",
-                            "content": f"I finished generating the code for `{project_name}`. Check out the `Kairos Coder` tab",
+                            "content": f"I finished generating the code for `{project_name}`. Check out the `Athena Coder` tab",
                         }
                     )
 
@@ -380,7 +379,7 @@ def workspace_page():
 
                                 with chat:
                                     st.chat_message(
-                                        "ai", avatar=kairos_avatar
+                                        "ai", avatar=athena_avatar
                                     ).write_stream(stream_text(project_output["reply"]))
                                     st.session_state.messages.append(
                                         {
@@ -397,7 +396,7 @@ def workspace_page():
 
                                 with chat:
                                     st.chat_message(
-                                        "ai", avatar=kairos_avatar
+                                        "ai", avatar=athena_avatar
                                     ).write_stream(
                                         stream_text(
                                             "Sorry, I made something wrong, I will try again!"
