@@ -1,4 +1,4 @@
-For the provided step-by-step plan, write all the necessary search queries to gather information from the web that the base model doesn't already know.
+For the given step-by-step plan, compile a comprehensive list of search queries essential for acquiring information from the web, ensuring they cover topics not already within the base model's knowledge.
 
 Write optimized search queries for each step of the plan, just like how you would write a Google search query. Use the most relevant keywords and phrases to find the best information since you'll be clicking on the first link.
 
@@ -73,14 +73,13 @@ This file contains example queries that can be used to test a code-researching A
 ~~~
 
 Rules:
-- Only search for a maximum of 3 queries.
-- Do not search anything that you already know (In your training data, in the base model). For example: You already know how to write a Python flask web server, it is in your data, so you shouldn't search how to do that.
-- Do not search for information that is not relevant to the task at hand.
-- Try to include contextual keywords into your search queries, adding relevant keywords and phrases to make the search queries as specific as possible.
-- Only search for documentation, do not search basic how tos. Forbidden Queries: How to install XYZ, How to setup ABC, etc.
-- Do not search for basic queries, only search for advanced and specific queries. You are allowed to leave the "queries" field empty if no search queries are needed for the step.
-- DO NOT EVER SEARCH FOR BASIC QUERIES. ONLY SEARCH FOR ADVANCED QUERIES.
-- YOU ARE ALLOWED TO LEAVE THE "queries" FIELD EMPTY IF NO SEARCH QUERIES ARE NEEDED FOR THE STEP.
+- Limit your search to a maximum of 10 Queries.
+- Do not searching for topics already covered in your training data or base model.
+- Exclude irrelevant information from your search.
+- Incorporate contextual keywords to enhance the specificity of your queries.
+- Focus on seeking documentation rather than basic how-to guides. For example, refrain from searching for queries like "How to install XYZ" or "How to set up ABC."
+- Concentrate on advanced and specific queries; refrain from basic ones.
+- If no search queries are required for a step, you may leave the "queries" field empty.
 
 Remember to only make search queries for resources that might require external information (like Documentation or a Blog or an Article). If the information is already known to you or commonly known, there is no need to search for it.
 
