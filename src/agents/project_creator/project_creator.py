@@ -5,7 +5,8 @@ from jinja2 import Environment, BaseLoader
 from src.llm import LLM
 
 
-project_creator_prompt = open("src/agents/project_creator/prompt.jinja2").read().strip()
+# project_creator_prompt = open("src/agents/project_creator/prompt.jinja2").read().strip()
+project_creator_prompt = open("C:/Users/Asus/Downloads/charity work/Athena/src/agents/project_creator/prompt.jinja2").read().strip()
 
 
 class ProjectCreator:

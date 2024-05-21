@@ -3,7 +3,9 @@ from jinja2 import Environment, BaseLoader
 import ast
 from src.llm import LLM
 
-decision_prompt = open("src/agents/decision_taker/prompt.jinja2").read().strip()
+# decision_prompt = open("src/agents/decision_taker/prompt.jinja2").read().strip()
+decision_prompt = open("C:/Users/Asus/Downloads/charity work/Athena/src/agents/decision_taker/prompt.jinja2").read().strip()
+
 
 import json
 import re

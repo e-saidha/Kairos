@@ -3,7 +3,8 @@ from jinja2 import Environment, BaseLoader
 from src.llm import LLM
 
 
-planner_prompt = open("src/agents/planner/prompt.jinja2").read().strip()
+# planner_prompt = open("src/agents/planner/prompt.jinja2").read().strip()
+planner_prompt = open("C:/Users/Asus/Downloads/charity work/Athena/src/agents/planner/prompt.jinja2").read().strip()
 
 
 class Planner:

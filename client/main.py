@@ -1,6 +1,6 @@
 import sys
-sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
-# sys.path.append("C:/Users/Asus/Desktop/kairos-final/Kairos")
+# sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
+sys.path.append("C:/Users/Asus/Downloads/charity work/Athena")
 import logging
 
 import os
@@ -21,8 +21,10 @@ original_working_dir = os.getcwd()
 
 
 # Loading messages avatars
-kairos_avatar = "assets/kairos-profile.png"
-user_avatar = "assets/user-profile.jpg"
+# kairos_avatar = "Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg"
+# user_avatar = "assets/user-profile.jpg"
+kairos_avatar = "C:/Users/Asus/Downloads/charity work/Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg"
+user_avatar = "C:/Users/Asus/Downloads/charity work/Athena/assets/user-profile.jpg"
 
 selected_model = None
 google_api_key = None
@@ -30,10 +32,21 @@ google_api_key = None
 replicate_api_key = None
 
 # Set page layout
-st.set_page_config(layout="wide")
+st.set_page_config(page_title = "Athena", page_icon="C:/Users/Asus/Downloads/New folder (2)/Athena/assets/mars_planet_icon_263081.ico", layout = "wide")
+# st.set_page_config(layout="wide")
+
+
+# removing top orange yellow bar 
+hide_decoration_bar_style = '''
+    <style>
+        header {visibility: hidden;}
+    </style>
+'''
+st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 
 # Set custom CSS styling
-with open("client/style.css") as f:
+# with open("client/style.css") as f:
+with open("C:/Users/Asus/Downloads/charity work/Athena/client/style.css") as f:    
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Initalized messages
@@ -54,16 +67,20 @@ def welcome_page():
         st.write(
             """Kairos is an advanced AI software engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. """
         )
+
+        st.markdown("<br>", unsafe_allow_html=True)
         
         
         # st.markdown("----", unsafe_allow_html=True)
-        columns = st.columns((1, 1, 1))
-        btn = columns[1].button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
+        columns = st.columns((1, 1, 1, 1, 1, 1, 1,1 ,1))
+        btn = columns[4].button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
         # st.markdown("----", unsafe_allow_html=True)
+        st.markdown("<br>", unsafe_allow_html=True)
         
         # btn = st.button(label="Start Now", on_click=page_switcher, args=(configuration_page,), type="primary")
-        st.image(image="assets/kairos-profile.png", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-
+        # st.image(image="assets/kairos-profile.png", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+        st.image(image="C:/Users/Asus/Downloads/charity work/Athena/assets/WhatsApp Image 2024-05-20 at 2.48.47 PM.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+ 
         if btn:
             st.rerun()
 
@@ -146,9 +163,10 @@ def workspace_page():
 
     # Workspace
     with col2:
+        st.title("Athena's Workspace", anchor=False)
         workspace = st.container(height=620, border=True)
         with workspace:
-            st.title("Kairos Workspace", anchor=False)
+            # st.title("Kairos Workspace", anchor=False)
             tab1, tab2, tab3, tab4 = st.tabs(
                 ["Planner", "Browser", "Coder", "Project"]
             )
@@ -168,10 +186,11 @@ def workspace_page():
     # Chat
     prompt = st.chat_input(placeholder="Talk to Kairos")
     with col1:
+        st.title("Chat", anchor=False)
         chat = st.container(height=620, border=True)
 
         with chat:
-            st.title("Kairos Chat", anchor=False)
+            # st.title("Kairos Chat", anchor=False)
 
             # Displaying messages
             for message in st.session_state.messages:
