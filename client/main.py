@@ -1,6 +1,5 @@
 import sys
-sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
-# sys.path.append("C:/Users/Asus/Downloads/charity work/Athena")
+# sys.path.append("/Users/sarthakkapila/Desktop/Athena/Athena")
 import logging
 
 import os
