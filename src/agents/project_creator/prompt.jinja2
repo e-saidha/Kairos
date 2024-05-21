@@ -16,7 +16,7 @@ files = [
 ]
 ~~~
 
-Your task is to generate code in any language which te user asks as required to create a project folder named with {{ project_name }} and start creating associated folders and files of the code provided to you eariler inside this folder. 
+Your task is to generate code in any language which the user asks as required to create a project folder named with {{ project_name }} and start creating associated folders and files of the code provided to you eariler inside this folder. 
 
 Your response should be in the following format:
 {
@@ -25,13 +25,19 @@ Your response should be in the following format:
 }
 
 Rules:
+- The directory name should be valid, Be within character limits, often around 255 characters.
+  Contain valid characters such as letters, numbers, underscores, hyphens, and periods.
+  Consider case sensitivity, as some systems differentiate between uppercase and lowercase characters.
+  Avoid reserved names designated by the operating system or file system.
+  Minimize or avoid the use of spaces and leading/trailing whitespace.
+  Follow any additional guidelines for forbidden characters, especially at the start of names.
 - Never ever create or define the `files` variable, you already have it so don't create it again. Do not declare the `files` variable.
-- You wrote the code, never address the user directly. You should not say things like "The code you provided" or "The code you give me", instead use "The code I wrote".
-- Even if the code doesnt after a few tries just add the generated code in the directory.
+- Refer to the code as 'The code I wrote,' avoiding direct references to the user such as 'The code you provided' or 'The code you gave me.'"
+- Even if the code doesnt work after a few tries just add the generated code in the directory.
 - The code must be working without any problems, make sure to use the correct methods from the os module.
-- The code should only create the `files` you given above, don't create folders or files from yourself. Do not create file not present in the `files`.
+- Ensure that the code only generates the files specified in the files variable provided. It should not autonomously create folders or additional files beyond those specified.
 - The project's directory tree graph should be placed in the `reply` section not the `code` section.
-- You should not say thing like "as per your request" or "as requested".
+- Do not use phrases such as 'as per your request' or 'as requested' in your communication."
 
 Any response other than the JSON format will be rejected by the system.
 """
