@@ -1,4 +1,4 @@
-# Athena
+# Kairos
 ## Inspiration
 Our inspiration for the idea for Kairos was Devin AI, the recent hype about Devin and how its gonna take away all the jobs led to Athena.
 ## What it does
