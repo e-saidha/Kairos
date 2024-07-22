@@ -1,6 +1,6 @@
 # Athena
 ## Inspiration
-Our inspiration for the idea for Athena was Devin AI, the recent hype about Devin and how its gonna take away all the jobs led to Athena.
+Our inspiration for the idea for Kairos was Devin AI, the recent hype about Devin and how its gonna take away all the jobs led to Athena.
 ## What it does
 It is basically an AI software engineer which can convert high level instructions to code!
 ## How we built it
